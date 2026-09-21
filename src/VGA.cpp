@@ -44,7 +44,7 @@ extern int Cache_WriteBack_Addr(uint32_t addr, uint32_t size);
 void VGA::attachPinToSignal(int pin, int signal)
 {
 	esp_rom_gpio_connect_out_signal(pin, signal, false, false);
-	gpio_hal_iomux_func_sel(GPIO_PIN_MUX_REG[pin], PIN_FUNC_GPIO);
+	gpio_iomux_out(pin, PIN_FUNC_GPIO, false);
 	gpio_set_drive_capability((gpio_num_t)pin, (gpio_drive_cap_t)3);
 }
 
